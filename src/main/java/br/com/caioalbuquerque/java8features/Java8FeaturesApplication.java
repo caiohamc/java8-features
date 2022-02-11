@@ -8,26 +8,26 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Arrays;
 import java.util.StringJoiner;
+import java.util.logging.Logger;
 
+/**
+ * @author Caio Albuquerque
+ * @since 11/02/2022
+ */
 @SpringBootApplication
-@Slf4j
 public class Java8FeaturesApplication implements CommandLineRunner {
 
+	private final Logger LOGGER = Logger.getLogger("MAIN");
 	public static void main(String[] args) {
 		SpringApplication.run(Java8FeaturesApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-
-		log.info("-----------------------------------------------------------------------------------------");
-
-		// ----- ITEM 01 -----
-		StringJoiner x = new StringJoiner(";");
-		x.add("3a");
-		x.add("#");
-		log.info("String created with StringJoiner: {}", x.toString());
-
-		log.info("-----------------------------------------------------------------------------------------");
+		LOGGER.info("-----------------------------------------------------------------------------------------");
+		LOGGER.info("1. StringJoiner Example");
+		String firstCustomStringCreated = StringUtil.createStringUsingStringJoiner(":");
+		String secondCustomStringCreated = StringUtil.createStringUsingStringJoiner(";","[",")");
+		LOGGER.info("-----------------------------------------------------------------------------------------");
 	}
 }

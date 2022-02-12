@@ -1,9 +1,5 @@
-package br.com.caioalbuquerque.java8features.util;
+package br.com.caioalbuquerque.java8features.example01;
 
-import lombok.extern.log4j.Log4j;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringJoiner;
 import java.util.logging.Logger;
 
@@ -26,8 +22,10 @@ public final class StringUtil {
     public static String createStringUsingStringJoiner(String delimiter) {
         LOGGER.info("Calling createStringUsingStringJoiner() method only with DELIMITER " + delimiter);
         StringJoiner stringJoiner = new StringJoiner(delimiter);
+
         LOGGER.info("Adding 'aaa', 'bbb', 'ccc'");
         String createdString = stringJoiner.add("aaa").add("bbb").add("ccc").toString();
+
         LOGGER.info("Created string ---> " + createdString);
         return createdString;
     }
@@ -47,8 +45,10 @@ public final class StringUtil {
         LOGGER.info("Calling createStringUsingStringJoiner() method only with DELIMITER " + delimiter
                 + " PREFIX " + prefix + " SUFFIX " + suffix);
         StringJoiner stringJoiner = new StringJoiner(delimiter, prefix, suffix);
+
         LOGGER.info("Adding 'ddd', 'eee' and 'fff'");
         String createdString = stringJoiner.add("ddd").add("eee").add("fff").toString();
+
         LOGGER.info("Created string ---> " + createdString);
         return createdString;
     }

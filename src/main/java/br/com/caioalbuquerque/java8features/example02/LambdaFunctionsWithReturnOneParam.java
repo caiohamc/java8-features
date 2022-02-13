@@ -5,5 +5,5 @@ package br.com.caioalbuquerque.java8features.example02;
  * @since 11/02/2022
  */
 public interface LambdaFunctionsWithReturnOneParam {
-    public String executeWithReturnOneParam(String param1);
+    String executeWithReturnOneParam(String param1);
 }

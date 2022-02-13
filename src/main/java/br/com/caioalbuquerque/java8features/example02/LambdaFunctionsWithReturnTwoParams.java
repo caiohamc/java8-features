@@ -5,5 +5,5 @@ package br.com.caioalbuquerque.java8features.example02;
  * @since 11/02/2022
  */
 public interface LambdaFunctionsWithReturnTwoParams {
-    public String executeWithReturnTwoParams(String param1, String param2);
+    String executeWithReturnTwoParams(String param1, String param2);
 }

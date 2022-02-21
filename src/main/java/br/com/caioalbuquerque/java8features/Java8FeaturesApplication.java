@@ -4,6 +4,7 @@ import br.com.caioalbuquerque.java8features.example01.*;
 import br.com.caioalbuquerque.java8features.example02.*;
 import br.com.caioalbuquerque.java8features.example03.TimeUtil;
 import br.com.caioalbuquerque.java8features.example04.StaticMethodInsideInterfaceImpl;
+import br.com.caioalbuquerque.java8features.example05.StreamsUtil;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,11 +30,10 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		example02();
 		example03();
 		example04();
+		example05();
 	}
 
-	/**
-	 * StringJoiner
-	 */
+	/** StringJoiner */
 	private void example01() {
 		LOGGER.info("-----------------------------------------------------------------------------------------");
 		LOGGER.info("1. StringJoiner Examples");
@@ -43,9 +43,7 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		String secondCustomStringCreated = StringUtil.createStringUsingStringJoiner(";","[",")");
 	}
 
-	/**
-	 * Lambda
-	 */
+	/** Lambda */
 	private void example02() {
 		LOGGER.info("-----------------------------------------------------------------------------------------");
 		LOGGER.info("2. Lambda Functions Examples ");
@@ -97,9 +95,7 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info("return (param1 + param2): " + lfWithReturnTwoParams.executeWithReturnTwoParams("foo", "bar"));
 	}
 
-	/**
-	 * Clock
-	 */
+	/** Clock */
 	private void example03(){
 		LOGGER.info("-----------------------------------------------------------------------------------------");
 		LOGGER.info("3. Clock Examples");
@@ -110,6 +106,7 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info("Instant: " + instant);
 	}
 
+	/** Interface with Static Method */
 	private void example04(){
 		LOGGER.info("-----------------------------------------------------------------------------------------");
 		LOGGER.info("4. Interface with static method");
@@ -139,5 +136,19 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info(" ");
 		LOGGER.info("Calling static method from an interface with return and two params: ");
 		LOGGER.info(staticMethodInsideInterface.executeStaticMethodFromInterfaceWithResultTwoParams("foo", "bar"));
+	}
+
+	/* Streams */
+	private void example05(){
+		LOGGER.info("-----------------------------------------------------------------------------------------");
+		LOGGER.info("5. Java Streams API");
+
+		LOGGER.info(" ");
+		LOGGER.info("Calling getFullIntStream() - Range (1, 10)");
+		StreamsUtil.getFullIntStream(1, 10);
+
+		LOGGER.info(" ");
+		LOGGER.info("Calling getSkippedIntStream() - Range (1, 10) Skip(5)");
+		StreamsUtil.getSkippedIntStream(1, 10, 5);
 	}
 }

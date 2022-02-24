@@ -5,6 +5,7 @@ import br.com.caioalbuquerque.java8features.example02.*;
 import br.com.caioalbuquerque.java8features.example03.TimeUtil;
 import br.com.caioalbuquerque.java8features.example04.StaticMethodInsideInterfaceImpl;
 import br.com.caioalbuquerque.java8features.example05.StreamsUtil;
+import br.com.caioalbuquerque.java8features.example06.BinaryTree;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,6 +32,7 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		example03();
 		example04();
 		example05();
+		example06();
 	}
 
 	/** StringJoiner */
@@ -150,5 +152,25 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info(" ");
 		LOGGER.info("Calling getSkippedIntStream() - Range (1, 10) Skip(5)");
 		StreamsUtil.getSkippedIntStream(1, 10, 5);
+	}
+
+	/* Binary Tree */
+	private void example06(){
+		LOGGER.info("-----------------------------------------------------------------------------------------");
+		LOGGER.info("6. Binary Tree Operations");
+
+		LOGGER.info(" ");
+		LOGGER.info("Retrieving singleton instance of the statically created binary tree object");
+		BinaryTree binaryTree = BinaryTree.getInstance();
+		LOGGER.info("Binary Tree: " + binaryTree);
+
+		LOGGER.info(" ");
+		LOGGER.info("Filling dinamically a binary tree with 6 elements from left to right filling all childs as possible");
+		binaryTree.add(1);
+		binaryTree.add(2);
+		binaryTree.add(3);
+		binaryTree.add(4);
+		binaryTree.add(5);
+		binaryTree.add(6);
 	}
 }

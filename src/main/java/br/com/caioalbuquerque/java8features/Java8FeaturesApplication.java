@@ -1,10 +1,10 @@
 package br.com.caioalbuquerque.java8features;
 
 import br.com.caioalbuquerque.java8features.example01.*;
-import br.com.caioalbuquerque.java8features.example02.*;
-import br.com.caioalbuquerque.java8features.example03.TimeUtil;
-import br.com.caioalbuquerque.java8features.example04.StaticMethodInsideInterfaceImpl;
-import br.com.caioalbuquerque.java8features.example05.StreamsUtil;
+import br.com.caioalbuquerque.java8features.example02.TimeUtil;
+import br.com.caioalbuquerque.java8features.example03.*;
+import br.com.caioalbuquerque.java8features.example05.StaticMethodInsideInterfaceImpl;
+import br.com.caioalbuquerque.java8features.example04.StreamsUtil;
 import br.com.caioalbuquerque.java8features.example06.BinaryTree;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 @SpringBootApplication
 public class Java8FeaturesApplication implements CommandLineRunner {
-	private final Logger LOGGER = Logger.getLogger("MAIN");
+	private static final Logger LOGGER = Logger.getLogger("MAIN");
 
 	public static void main(String[] args) {
 		SpringApplication.run(Java8FeaturesApplication.class, args);
@@ -45,10 +45,21 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		String secondCustomStringCreated = StringUtil.createStringUsingStringJoiner(";","[",")");
 	}
 
-	/** Lambda */
-	private void example02() {
+	/** Clock */
+	private void example02(){
 		LOGGER.info("-----------------------------------------------------------------------------------------");
-		LOGGER.info("2. Lambda Functions Examples ");
+		LOGGER.info("2. Clock Examples");
+		LOGGER.info(" ");
+		Long currentTimeMillis = TimeUtil.getCurrentTimeMillis();
+		LOGGER.info("Current time millis: " + currentTimeMillis);
+		Instant instant = TimeUtil.getInstant();
+		LOGGER.info("Instant: " + instant);
+	}
+
+	/** Lambda */
+	private void example03() {
+		LOGGER.info("-----------------------------------------------------------------------------------------");
+		LOGGER.info("3. Lambda Functions Examples ");
 
 		LOGGER.info(" ");
 		LOGGER.info("Calling lambda function with no return and no params");
@@ -97,21 +108,24 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info("return (param1 + param2): " + lfWithReturnTwoParams.executeWithReturnTwoParams("foo", "bar"));
 	}
 
-	/** Clock */
-	private void example03(){
+	/* Streams */
+	private void example04(){
 		LOGGER.info("-----------------------------------------------------------------------------------------");
-		LOGGER.info("3. Clock Examples");
+		LOGGER.info("4. Java Streams API");
+
 		LOGGER.info(" ");
-		Long currentTimeMillis = TimeUtil.getCurrentTimeMillis();
-		LOGGER.info("Current time millis: " + currentTimeMillis);
-		Instant instant = TimeUtil.getInstant();
-		LOGGER.info("Instant: " + instant);
+		LOGGER.info("Calling getFullIntStream() - Range (1, 10)");
+		StreamsUtil.getFullIntStream(1, 10);
+
+		LOGGER.info(" ");
+		LOGGER.info("Calling getSkippedIntStream() - Range (1, 10) Skip(5)");
+		StreamsUtil.getSkippedIntStream(1, 10, 5);
 	}
 
 	/** Interface with Static Method */
-	private void example04(){
+	private void example05(){
 		LOGGER.info("-----------------------------------------------------------------------------------------");
-		LOGGER.info("4. Interface with static method");
+		LOGGER.info("5. Interface with static method");
 		StaticMethodInsideInterfaceImpl staticMethodInsideInterface = new StaticMethodInsideInterfaceImpl();
 		String returnedValue = null;
 
@@ -140,24 +154,10 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info(staticMethodInsideInterface.executeStaticMethodFromInterfaceWithResultTwoParams("foo", "bar"));
 	}
 
-	/* Streams */
-	private void example05(){
-		LOGGER.info("-----------------------------------------------------------------------------------------");
-		LOGGER.info("5. Java Streams API");
-
-		LOGGER.info(" ");
-		LOGGER.info("Calling getFullIntStream() - Range (1, 10)");
-		StreamsUtil.getFullIntStream(1, 10);
-
-		LOGGER.info(" ");
-		LOGGER.info("Calling getSkippedIntStream() - Range (1, 10) Skip(5)");
-		StreamsUtil.getSkippedIntStream(1, 10, 5);
-	}
-
-	/* Binary Tree */
+	/* Data Structures - Binary Tree */
 	private void example06(){
 		LOGGER.info("-----------------------------------------------------------------------------------------");
-		LOGGER.info("6. Binary Tree Operations");
+		LOGGER.info("6. Data Structures - Binary Tree Operations");
 
 		LOGGER.info(" ");
 		LOGGER.info("Retrieving singleton instance of the statically created binary tree object");
@@ -165,12 +165,24 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info("Binary Tree: " + binaryTree);
 
 		LOGGER.info(" ");
-		LOGGER.info("Filling dinamically a binary tree with 6 elements from left to right filling all childs as possible");
-		binaryTree.add(1);
-		binaryTree.add(2);
-		binaryTree.add(3);
-		binaryTree.add(4);
-		binaryTree.add(5);
-		binaryTree.add(6);
+		LOGGER.info("Filling dinamically a binary tree with a few elements");
+		binaryTree.addNode(4);
+		binaryTree.addNode(3);
+		binaryTree.addNode(9);
+		binaryTree.addNode(10);
+		binaryTree.addNode(6);
+		binaryTree.addNode(5);
+		binaryTree.addNode(1);
+		binaryTree.addNode(2);
+		binaryTree.addNode(11);
+		binaryTree.addNode(7);
+		binaryTree.addNode(16);
+
+		LOGGER.info("Searching for maximum key in binary tree ");
+		binaryTree.getMaxKey(binaryTree.getRoot());
+
+		LOGGER.info(" ");
+		LOGGER.info("Searching for minimum key in binary tree ");
+		binaryTree.getMinKey(binaryTree.getRoot());
 	}
 }

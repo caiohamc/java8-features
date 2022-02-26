@@ -8,15 +8,13 @@ import lombok.Data;
  */
 @Data
 public class TreeNode {
-    private Integer nodeValue;
-    private TreeNode leftChildNode;
-    private TreeNode rightChildNode;
-    private TreeNode parentNode;
+    private Integer key;
+    private TreeNode leftChild;
+    private TreeNode rightChild;
 
-    public TreeNode(Integer nodeValue) {
-        this.nodeValue = nodeValue;
-        this.leftChildNode = null;
-        this.rightChildNode = null;
-        this.parentNode = null;
+    public TreeNode(Integer key) {
+        this.key = key;
+        this.leftChild = null;
+        this.rightChild = null;
     }
 }

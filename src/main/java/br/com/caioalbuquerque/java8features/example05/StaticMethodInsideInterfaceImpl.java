@@ -1,4 +1,4 @@
-package br.com.caioalbuquerque.java8features.example04;
+package br.com.caioalbuquerque.java8features.example05;
 
 /**
  * @author Caio Albuquerque

@@ -10,174 +10,92 @@ import java.util.logging.Logger;
  */
 @Data
 public class BinaryTree {
-    private final Logger LOGGER = java.util.logging.Logger.getLogger("BinaryTree");
-
-    /** DESIGN PATTERNS - Singleton Implementation */
+    private static final Logger LOGGER = java.util.logging.Logger.getLogger("BinaryTree");
     private static BinaryTree INSTANCE = new BinaryTree();
 
     private TreeNode root;
-    private TreeNode currentRoot;
-    private int counter = 0;
-    private int btLevel = 0;
-    private int btLevelNodesLimit = 0;
 
+    /**
+     * Singleton instance of the binary tree
+     * @return binary tree instance
+     */
     public static BinaryTree getInstance(){
         return INSTANCE;
     }
 
-    public void add(int nodeValue) {
-        addNodesFromLeftToRight(nodeValue);
-        // TODO addNodesFromRightToLeft();
-        // TODO addNodesRandonly();
-    }
-
-    private void addNodesFromLeftToRight(int nodeValue){
+    /**
+     * Method that receives all binary tree input data
+     *
+     * @param key value used in binary tree operations to identify nodes
+     */
+    public void addNode(Integer key) {
         if (root == null) {
-            LOGGER.info("Level: " + btLevel);
-            LOGGER.info("Limit: " + btLevelNodesLimit);
-            LOGGER.info("Counter: " + counter);
+            root = new TreeNode(key);
+            LOGGER.info("Adding root node ...");
+            LOGGER.info("Root node: " + root);
+            LOGGER.info(" ");
+            return;
+        }
 
-            root = new TreeNode(nodeValue);
-            LOGGER.info("Added Node with Value: " + nodeValue
-                    + " with left child (" + root.getLeftChildNode() + ")"
-                    + ", rigth child (" + root.getRightChildNode() + ")"
-                    + " and parent (" + root.getParentNode() + ")");
-            currentRoot = root;
-            btLevelNodesLimit = calculatePower(btLevel);
+        addNodesRecursively(root, key);
+    }
 
-            btLevel++;
-            counter++;
+    /**
+     * Method that receives all binary tree elements, except the first one (root)
+     *
+     * @param current it's root in first execution, but it changes when traversal
+     * @param nodeKey value used in binary tree operations to identify nodes
+     * @return added node
+     */
+    private TreeNode addNodesRecursively(TreeNode current, Integer nodeKey) {
+        if (current == null) {
+            TreeNode newNode = new TreeNode(nodeKey);
+            LOGGER.info("Adding node ...");
+            LOGGER.info("Node: " + newNode);
+            LOGGER.info(" ");
+            return newNode;
+        }
 
-            LOGGER.info("Level: " + btLevel);
-            LOGGER.info("Limit: " + btLevelNodesLimit);
-            LOGGER.info("Counter: " + counter);
+        if (nodeKey < current.getKey()) {
+            LOGGER.info("New node key " + nodeKey + " smaller than current key " + current.getKey());
+            current.setLeftChild(addNodesRecursively(current.getLeftChild(), nodeKey));
+        } else if (nodeKey > root.getKey()) {
+            LOGGER.info("New node key " + nodeKey + " bigger than current key " + current.getKey());
+            current.setRightChild(addNodesRecursively(current.getRightChild(), nodeKey));
         } else {
-            LOGGER.info("Level: " + btLevel);
-            LOGGER.info("Limit: " + btLevelNodesLimit);
-            LOGGER.info("Counter: " + counter);
+            LOGGER.info("New node key " + nodeKey + " equals to current key");
+            return current;
+        }
+        return current;
+    }
 
-            if (currentRoot.getLeftChildNode() != null && currentRoot.getRightChildNode() != null) {
-                LOGGER.info("Level: " + btLevel);
-                LOGGER.info("Limit: " + btLevelNodesLimit);
-                LOGGER.info("Counter: " + counter);
-
-                if (counter < btLevelNodesLimit) {
-                    LOGGER.info("Level: " + btLevel);
-                    LOGGER.info("Limit: " + btLevelNodesLimit);
-                    LOGGER.info("Counter: " + counter);
-                    counter++;
-
-                    if (btLevel == 2) {
-                        currentRoot = currentRoot.getParentNode().getRightChildNode();
-                    }
-
-                    LOGGER.info("Level: " + btLevel);
-                    LOGGER.info("Limit: " + btLevelNodesLimit);
-                    LOGGER.info("Counter: " + counter);
-                } else if (counter == btLevelNodesLimit) {
-                    LOGGER.info("Level: " + btLevel);
-                    LOGGER.info("Limit: " + btLevelNodesLimit);
-                    LOGGER.info("Counter: " + counter);
-
-                    TreeNode parent = currentRoot;
-                    currentRoot = currentRoot.getLeftChildNode();
-                    currentRoot.setParentNode(parent);
-                    currentRoot.setLeftChildNode(new TreeNode(nodeValue));
-                    LOGGER.info("Added Node with Value: " + nodeValue
-                            + " with left child (" + (currentRoot.getLeftChildNode() == null
-                                                    ? currentRoot.getLeftChildNode()
-                                                    : currentRoot.getLeftChildNode().getNodeValue()) + ")"
-                            + ", rigth child (" + (currentRoot.getRightChildNode() == null
-                                                    ? currentRoot.getRightChildNode()
-                                                    : currentRoot.getRightChildNode().getNodeValue()) + ")"
-                            + " and parent (" + (currentRoot.getParentNode() == null
-                                                    ? currentRoot.getParentNode()
-                                                    : currentRoot.getParentNode().getNodeValue()) + ")");
-                    btLevelNodesLimit = calculatePower(btLevel);
-                    btLevel++;
-                    counter = 0;
-
-                    LOGGER.info("Level: " + btLevel);
-                    LOGGER.info("Limit: " + btLevelNodesLimit);
-                    LOGGER.info("Counter: " + counter);
-                }
-            }
-
-            LOGGER.info("Level: " + btLevel);
-            LOGGER.info("Limit: " + btLevelNodesLimit);
-            LOGGER.info("Counter: " + counter);
-
-            if (currentRoot.getLeftChildNode() == null) {
-                currentRoot.setLeftChildNode(new TreeNode(nodeValue));
-                LOGGER.info("Added Node with Value: " + nodeValue
-                        + " with left child (" + (currentRoot.getLeftChildNode() == null
-                                                    ? currentRoot.getLeftChildNode()
-                                                    : currentRoot.getLeftChildNode().getNodeValue()) + ")"
-                        + ", rigth child (" + (currentRoot.getRightChildNode() == null
-                                                    ? currentRoot.getRightChildNode()
-                                                    : currentRoot.getRightChildNode().getNodeValue()) + ")"
-                        + " and parent (" + (currentRoot.getParentNode() == null
-                                                    ? currentRoot.getParentNode()
-                                                    : currentRoot.getParentNode().getNodeValue()) + ")");
-                LOGGER.info("Level: " + btLevel);
-                LOGGER.info("Limit: " + btLevelNodesLimit);
-                LOGGER.info("Counter: " + counter);
-            } else if (currentRoot.getRightChildNode() == null) {
-                currentRoot.setRightChildNode(new TreeNode(nodeValue));
-                LOGGER.info("Added Node with Value: " + nodeValue
-                        + " with left child (" + (currentRoot.getLeftChildNode() == null
-                                                    ? currentRoot.getLeftChildNode()
-                                                    : currentRoot.getLeftChildNode().getNodeValue()) + ")"
-                        + ", rigth child (" + (currentRoot.getRightChildNode() == null
-                                                    ? currentRoot.getRightChildNode()
-                                                    : currentRoot.getRightChildNode().getNodeValue()) + ")"
-                        + " and parent (" + (currentRoot.getParentNode() == null
-                                                    ? currentRoot.getParentNode()
-                                                    : currentRoot.getParentNode().getNodeValue()) + ")");
-                LOGGER.info("Level: " + btLevel);
-                LOGGER.info("Limit: " + btLevelNodesLimit);
-                LOGGER.info("Counter: " + counter);
-            }
+    /**
+     * Method to retrieve maximum binary tree key
+     *
+     * @param root search starting point
+     * @return maximum key
+     */
+    public Integer getMaxKey(TreeNode root){
+        if (root.getRightChild() == null) {
+            LOGGER.info("Maximum key is: " + root.getKey());
+            return root.getKey();
+        } else {
+            return getMaxKey(root.getRightChild());
         }
     }
 
     /**
-     * Method to calculate the limit number of nodes inside a reverse leveled binary tree
-     * This limit is defined by the formula -> limit = 2ˆN
+     * Method to retrieve minimum binary tree key
      *
-     * @param power Root level is 0 | Root's child level is 1 | Each child level increases the level of the reversed leveled binary tree
-     * @return Result of the power calculation
+     * @param root search starting point
+     * @return minimum key
      */
-    private int calculatePower(int power) {
-        int answer = 1;
-
-        for (int i=1; i<power; i++){
-            answer = answer * 2;
+    public Integer getMinKey(TreeNode root) {
+        if (root.getLeftChild() == null) {
+            LOGGER.info("Minimum key is: " + root.getKey());
+            return root.getKey();
+        } else {
+            return getMinKey(root.getLeftChild());
         }
-
-        return answer;
-    }
-
-    /**
-     * This method never will be called.
-     * It was introduced only to show that i can imagine all cenarios that a power calculation can have.
-     *
-     * @param power numer of times the numer is multiplied by itself
-     * @return power calculation result
-     */
-    private int calculatePowerWithAllPossiblePowerIntegerValues(int power) {
-        int answer = 1;
-
-        if (power < 0) {
-            return -1;
-        } else if (power == 0) {
-            return answer;
-        } else if (power > 0) {
-            for (int i = 1; i < power; i++) {
-                answer = answer * 2;
-            }
-        }
-
-        return answer;
     }
 }

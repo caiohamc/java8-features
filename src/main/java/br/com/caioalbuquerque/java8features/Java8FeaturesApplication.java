@@ -180,7 +180,7 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		binaryTree.addNode(16);
 
 		LOGGER.info("Searching for maximum and minimum keys ");
-		binaryTree.getMaxKey(binaryTree.getRoot());
 		binaryTree.getMinKey(binaryTree.getRoot());
+		binaryTree.getMaxKey(binaryTree.getRoot());
 	}
 }

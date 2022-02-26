@@ -70,21 +70,6 @@ public class BinaryTree {
     }
 
     /**
-     * Method to retrieve maximum binary tree key
-     *
-     * @param root search starting point
-     * @return maximum key
-     */
-    public Integer getMaxKey(TreeNode root){
-        if (root.getRightChild() == null) {
-            LOGGER.info("   Maximum key: " + root.getKey());
-            return root.getKey();
-        } else {
-            return getMaxKey(root.getRightChild());
-        }
-    }
-
-    /**
      * Method to retrieve minimum binary tree key
      *
      * @param root search starting point
@@ -96,6 +81,21 @@ public class BinaryTree {
             return root.getKey();
         } else {
             return getMinKey(root.getLeftChild());
+        }
+    }
+
+    /**
+     * Method to retrieve maximum binary tree key
+     *
+     * @param root search starting point
+     * @return maximum key
+     */
+    public Integer getMaxKey(TreeNode root){
+        if (root.getRightChild() == null) {
+            LOGGER.info("   Maximum key: " + root.getKey());
+            return root.getKey();
+        } else {
+            return getMaxKey(root.getRightChild());
         }
     }
 }

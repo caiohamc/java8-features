@@ -31,8 +31,8 @@ public class BinaryTree {
     public void addNode(Integer key) {
         if (root == null) {
             root = new TreeNode(key);
-            LOGGER.info("Adding root node ...");
-            LOGGER.info("Root node: " + root);
+            LOGGER.info("   Adding root node ...");
+            LOGGER.info("   Root node: " + root);
             LOGGER.info(" ");
             return;
         }
@@ -50,20 +50,20 @@ public class BinaryTree {
     private TreeNode addNodesRecursively(TreeNode current, Integer nodeKey) {
         if (current == null) {
             TreeNode newNode = new TreeNode(nodeKey);
-            LOGGER.info("Adding node ...");
-            LOGGER.info("Node: " + newNode);
+            LOGGER.info("   Adding node ...");
+            LOGGER.info("   Node: " + newNode);
             LOGGER.info(" ");
             return newNode;
         }
 
         if (nodeKey < current.getKey()) {
-            LOGGER.info("New node key " + nodeKey + " smaller than current key " + current.getKey());
+            LOGGER.info("   New node key " + nodeKey + " smaller than current key " + current.getKey());
             current.setLeftChild(addNodesRecursively(current.getLeftChild(), nodeKey));
         } else if (nodeKey > root.getKey()) {
-            LOGGER.info("New node key " + nodeKey + " bigger than current key " + current.getKey());
+            LOGGER.info("   New node key " + nodeKey + " bigger than current key " + current.getKey());
             current.setRightChild(addNodesRecursively(current.getRightChild(), nodeKey));
         } else {
-            LOGGER.info("New node key " + nodeKey + " equals to current key");
+            LOGGER.info("   New node key " + nodeKey + " equals to current key");
             return current;
         }
         return current;
@@ -77,7 +77,7 @@ public class BinaryTree {
      */
     public Integer getMaxKey(TreeNode root){
         if (root.getRightChild() == null) {
-            LOGGER.info("Maximum key is: " + root.getKey());
+            LOGGER.info("   Maximum key: " + root.getKey());
             return root.getKey();
         } else {
             return getMaxKey(root.getRightChild());
@@ -92,7 +92,7 @@ public class BinaryTree {
      */
     public Integer getMinKey(TreeNode root) {
         if (root.getLeftChild() == null) {
-            LOGGER.info("Minimum key is: " + root.getKey());
+            LOGGER.info("   Minimum key: " + root.getKey());
             return root.getKey();
         } else {
             return getMinKey(root.getLeftChild());

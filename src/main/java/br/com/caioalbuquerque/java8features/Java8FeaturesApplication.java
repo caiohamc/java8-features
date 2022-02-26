@@ -166,6 +166,7 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 
 		LOGGER.info(" ");
 		LOGGER.info("Filling dinamically a binary tree with a few elements");
+		LOGGER.info(" ");
 		binaryTree.addNode(4);
 		binaryTree.addNode(3);
 		binaryTree.addNode(9);
@@ -178,11 +179,8 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		binaryTree.addNode(7);
 		binaryTree.addNode(16);
 
-		LOGGER.info("Searching for maximum key in binary tree ");
+		LOGGER.info("Searching for maximum and minimum keys ");
 		binaryTree.getMaxKey(binaryTree.getRoot());
-
-		LOGGER.info(" ");
-		LOGGER.info("Searching for minimum key in binary tree ");
 		binaryTree.getMinKey(binaryTree.getRoot());
 	}
 }

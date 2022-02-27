@@ -9,6 +9,7 @@ import br.com.caioalbuquerque.java8features.example06.BinaryTree;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.time.Instant;
 import java.util.logging.Logger;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
  * @since 11/02/2022
  */
 @SpringBootApplication
+@EnableScheduling
 public class Java8FeaturesApplication implements CommandLineRunner {
 	private static final Logger LOGGER = Logger.getLogger("MAIN");
 
@@ -33,9 +35,10 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		example04();
 		example05();
 		example06();
+		example07();
 	}
 
-	/** StringJoiner */
+	/* StringJoiner */
 	private void example01() {
 		LOGGER.info("-----------------------------------------------------------------------------------------");
 		LOGGER.info("1. StringJoiner Examples");
@@ -45,7 +48,7 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		String secondCustomStringCreated = StringUtil.createStringUsingStringJoiner(";","[",")");
 	}
 
-	/** Clock */
+	/* Clock */
 	private void example02(){
 		LOGGER.info("-----------------------------------------------------------------------------------------");
 		LOGGER.info("2. Clock Examples");
@@ -56,7 +59,7 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info("Instant: " + instant);
 	}
 
-	/** Lambda */
+	/* Lambda */
 	private void example03() {
 		LOGGER.info("-----------------------------------------------------------------------------------------");
 		LOGGER.info("3. Lambda Functions Examples ");
@@ -122,7 +125,7 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		StreamsUtil.getSkippedIntStream(1, 10, 5);
 	}
 
-	/** Interface with Static Method */
+	/* Interface with Static Method */
 	private void example05(){
 		LOGGER.info("-----------------------------------------------------------------------------------------");
 		LOGGER.info("5. Interface with static method");
@@ -182,5 +185,13 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info("Searching for maximum and minimum keys ");
 		binaryTree.getMinKey(binaryTree.getRoot());
 		binaryTree.getMaxKey(binaryTree.getRoot());
+	}
+
+	/* Jobs */
+	private void example07(){
+		LOGGER.info("-----------------------------------------------------------------------------------------");
+		LOGGER.info("7. Jobs Execution");
+		LOGGER.info(" ");
+		LOGGER.info("Running jobs with a few parameters ...");
 	}
 }

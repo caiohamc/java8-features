@@ -1,4 +1,4 @@
-package br.com.caioalbuquerque.java8features.example01;
+package br.com.caioalbuquerque.java8features.util;
 
 import java.util.StringJoiner;
 import java.util.logging.Logger;

@@ -1,6 +1,8 @@
 package br.com.caioalbuquerque.java8features.example01;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import br.com.caioalbuquerque.java8features.util.StringUtil;
 import org.junit.jupiter.api.Test;
 
 /**

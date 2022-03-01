@@ -1,4 +1,4 @@
-package br.com.caioalbuquerque.java8features.example06;
+package br.com.caioalbuquerque.java8features.examples.example06;
 
 import lombok.Data;
 

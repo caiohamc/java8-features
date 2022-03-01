@@ -1,17 +1,17 @@
 package br.com.caioalbuquerque.java8features;
 
-import br.com.caioalbuquerque.java8features.example01.*;
-import br.com.caioalbuquerque.java8features.example02.TimeUtil;
-import br.com.caioalbuquerque.java8features.example03.*;
-import br.com.caioalbuquerque.java8features.example05.StaticMethodInsideInterfaceImpl;
-import br.com.caioalbuquerque.java8features.example04.StreamsUtil;
-import br.com.caioalbuquerque.java8features.example06.BinaryTree;
+import br.com.caioalbuquerque.java8features.util.TimeUtil;
+import br.com.caioalbuquerque.java8features.examples.example03.*;
+import br.com.caioalbuquerque.java8features.examples.example05.StaticMethodInsideInterfaceImpl;
+import br.com.caioalbuquerque.java8features.examples.example04.StreamsUtil;
+import br.com.caioalbuquerque.java8features.examples.example06.BinaryTree;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.time.Instant;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 /**
@@ -29,34 +29,32 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		example01();
-		example02();
 		example03();
 		example04();
 		example05();
 		example06();
 		example07();
-	}
 
-	/* StringJoiner */
-	private void example01() {
 		LOGGER.info("-----------------------------------------------------------------------------------------");
-		LOGGER.info("1. StringJoiner Examples");
-		LOGGER.info(" ");
-		String firstCustomStringCreated = StringUtil.createStringUsingStringJoiner(":");
-		LOGGER.info(" ");
-		String secondCustomStringCreated = StringUtil.createStringUsingStringJoiner(";","[",")");
-	}
+		LOGGER.info("PROBLEM 01 - First Not Repeating Char");
 
-	/* Clock */
-	private void example02(){
-		LOGGER.info("-----------------------------------------------------------------------------------------");
-		LOGGER.info("2. Clock Examples");
-		LOGGER.info(" ");
-		Long currentTimeMillis = TimeUtil.getCurrentTimeMillis();
-		LOGGER.info("Current time millis: " + currentTimeMillis);
-		Instant instant = TimeUtil.getInstant();
-		LOGGER.info("Instant: " + instant);
+		String s1 = "aaabcddef", s2 = "abcabcabcc", s3 = "abbcdbcdef";
+		Character problem01_answer1 = problem01_firstNotRepeatingCharacter(s1);
+		Character problem01_answer2 = problem01_firstNotRepeatingCharacter(s2);
+		Character problem01_answer3 = problem01_firstNotRepeatingCharacter(s3);
+		LOGGER.info("String (" + s1 + ") has first not repeating char (" + problem01_answer1 + ")");
+		LOGGER.info("String (" + s2 + ") has first not repeating char (" + problem01_answer2 + ")");
+		LOGGER.info("String (" + s3 + ") has first not repeating char (" + problem01_answer3 + ")");
+
+		LOGGER.info("---------------------");
+		LOGGER.info("PROBLEM 02 - Two Sum");
+		int[] n1 = { 2, 7, 11, 19}, n2 = { 11, 19, 21, 25, 31, 33},  n3 = { 2, 3, 6, 7, 9};
+		int[] problem02_answer1 = problem02_twoSum(n1, 9);
+		int[] problem02_answer2 = problem02_twoSum(n2, 46);
+		int[] problem02_answer3 = problem02_twoSum(n3, 10);
+		LOGGER.info("Índices: " + problem02_answer1[0] + " e " + problem02_answer1[1]);
+		LOGGER.info("Índices: " + problem02_answer2[0] + " e " + problem02_answer2[1]);
+		LOGGER.info("Índices: " + problem02_answer3[0] + " e " + problem02_answer3[1]);
 	}
 
 	/* Lambda */
@@ -170,21 +168,22 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info(" ");
 		LOGGER.info("Filling dinamically a binary tree with a few elements");
 		LOGGER.info(" ");
-		binaryTree.addNode(4);
-		binaryTree.addNode(3);
-		binaryTree.addNode(9);
-		binaryTree.addNode(10);
-		binaryTree.addNode(6);
 		binaryTree.addNode(5);
+		binaryTree.addNode(3);
+		binaryTree.addNode(4);
 		binaryTree.addNode(1);
+		binaryTree.addNode(8);
+		binaryTree.addNode(9);
 		binaryTree.addNode(2);
-		binaryTree.addNode(11);
-		binaryTree.addNode(7);
-		binaryTree.addNode(16);
 
 		LOGGER.info("Searching for maximum and minimum keys ");
 		binaryTree.getMinKey(binaryTree.getRoot());
 		binaryTree.getMaxKey(binaryTree.getRoot());
+
+		LOGGER.info(" ");
+		LOGGER.info("Searching for the height of the binary tree ");
+		LOGGER.info("   Height: " + binaryTree.getHeight(binaryTree.getRoot()));
+		binaryTree.getHeight(binaryTree.getRoot());
 	}
 
 	/* Jobs */
@@ -193,5 +192,52 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info("7. Jobs Execution");
 		LOGGER.info(" ");
 		LOGGER.info("Running jobs with a few parameters ...");
+	}
+
+	/* Problem Solving 01 - First Not Repeating Character */
+	private Character problem01_firstNotRepeatingCharacter(String inputString){
+		// SOLUTION 1
+		for (int i=0; i<inputString.length(); i++) {
+			if(inputString.indexOf(inputString.charAt(i)) == inputString.lastIndexOf(inputString.charAt(i))) {
+				return inputString.charAt(i);
+			}
+		}
+
+		// SOLUTION 2
+		//HashMap<Character, Integer> charCount = new HashMap<>();
+		//for (int i=0; i<inputString.length(); i++) {
+		//	Character c = inputString.charAt(i);
+		//	if(charCount.containsKey(c))
+		//		charCount.put(c, charCount.get(c) + 1);
+		//	else
+		//		charCount.put(c, 1);
+		//}
+		//for (int i=0; i< inputString.length(); i++) {
+		//	Character c = inputString.charAt(i);
+		//	if(charCount.get(c) == 1)
+		//		return c;
+		//}
+
+		return '_';
+	}
+
+	private int[] problem02_twoSum(int[] nums, int target){
+		if (nums == null || target < 0) {
+			return null;
+		}
+
+		HashMap<Integer, Integer> auxNums = new HashMap<>();
+
+		for (int i=0; i< nums.length; i++) {
+			int current = nums[i]; 					// retrieve specific number of for loop
+			auxNums.put(current, i); 				// insert number in hashMap to future verification
+			int complement = target - current;
+
+			if (auxNums.containsKey(complement)){
+				return new int[]{auxNums.get(complement), i};
+			}
+		}
+
+		return null;
 	}
 }

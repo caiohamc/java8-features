@@ -1,4 +1,4 @@
-package br.com.caioalbuquerque.java8features.example02;
+package br.com.caioalbuquerque.java8features.util;
 
 import java.time.Clock;
 import java.time.Instant;

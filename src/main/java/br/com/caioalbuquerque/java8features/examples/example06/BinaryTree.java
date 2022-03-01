@@ -1,4 +1,4 @@
-package br.com.caioalbuquerque.java8features.example06;
+package br.com.caioalbuquerque.java8features.examples.example06;
 
 import lombok.Data;
 
@@ -59,7 +59,7 @@ public class BinaryTree {
         if (nodeKey < current.getKey()) {
             LOGGER.info("   New node key " + nodeKey + " smaller than current key " + current.getKey());
             current.setLeftChild(addNodesRecursively(current.getLeftChild(), nodeKey));
-        } else if (nodeKey > root.getKey()) {
+        } else if (nodeKey > current.getKey()) {
             LOGGER.info("   New node key " + nodeKey + " bigger than current key " + current.getKey());
             current.setRightChild(addNodesRecursively(current.getRightChild(), nodeKey));
         } else {
@@ -97,5 +97,25 @@ public class BinaryTree {
         } else {
             return getMaxKey(root.getRightChild());
         }
+    }
+
+    /**
+     * Method to retrieve height of a binary tree
+     *
+     * @param currentRoot root node of each recursive step
+     * @return integer value that represents the bigger path from root to leaf
+     */
+    public Integer getHeight(TreeNode currentRoot) {
+        if (currentRoot == null) {
+            return -1;
+        }
+
+        Integer maxLeftHeight = getHeight(currentRoot.getLeftChild());
+        Integer maxRightHeight = getHeight(currentRoot.getRightChild());
+        return getGreater(maxLeftHeight, maxRightHeight) + 1;
+    }
+
+    private Integer getGreater(Integer maxLeftHeight, Integer maxRightHeight) {
+        return maxLeftHeight > maxRightHeight ? maxLeftHeight : maxRightHeight;
     }
 }

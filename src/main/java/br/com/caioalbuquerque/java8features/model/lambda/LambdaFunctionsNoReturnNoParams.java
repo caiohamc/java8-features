@@ -1,4 +1,4 @@
-package br.com.caioalbuquerque.java8features.examples.example03;
+package br.com.caioalbuquerque.java8features.model.lambda;
 
 /**
  * @author Caio Albuquerque

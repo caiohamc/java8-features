@@ -1,16 +1,13 @@
 package br.com.caioalbuquerque.java8features;
 
-import br.com.caioalbuquerque.java8features.util.TimeUtil;
-import br.com.caioalbuquerque.java8features.examples.example03.*;
-import br.com.caioalbuquerque.java8features.examples.example05.StaticMethodInsideInterfaceImpl;
-import br.com.caioalbuquerque.java8features.examples.example04.StreamsUtil;
-import br.com.caioalbuquerque.java8features.examples.example06.BinaryTree;
+import br.com.caioalbuquerque.java8features.model.staticmethdinterface.StaticMethodInsideInterfaceImpl;
+import br.com.caioalbuquerque.java8features.util.StreamsUtil;
+import br.com.caioalbuquerque.java8features.model.binarytree.BinaryTree;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-import java.time.Instant;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
@@ -29,7 +26,6 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		example03();
 		example04();
 		example05();
 		example06();
@@ -55,58 +51,6 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		LOGGER.info("Índices: " + problem02_answer1[0] + " e " + problem02_answer1[1]);
 		LOGGER.info("Índices: " + problem02_answer2[0] + " e " + problem02_answer2[1]);
 		LOGGER.info("Índices: " + problem02_answer3[0] + " e " + problem02_answer3[1]);
-	}
-
-	/* Lambda */
-	private void example03() {
-		LOGGER.info("-----------------------------------------------------------------------------------------");
-		LOGGER.info("3. Lambda Functions Examples ");
-
-		LOGGER.info(" ");
-		LOGGER.info("Calling lambda function with no return and no params");
-		LOGGER.info("lfNoReturnNoParams.executeNoReturnNoParams(): ");
-		LambdaFunctionsNoReturnNoParams lfNoReturnNoParams = () -> LOGGER.info("Hello Lambda!");
-		lfNoReturnNoParams.executeNoReturnNoParams();
-
-		LOGGER.info(" ");
-		LOGGER.info("Calling lambda function with no return and one param");
-		LOGGER.info("lfNoReturnOneParam.executeNoReturnOneParam(param1): ");
-		LambdaFunctionsNoReturnOneParam lfNoReturnOneParam = (param1) -> LOGGER.info("param1: " + param1);
-		lfNoReturnOneParam.executeNoReturnOneParam("foo");
-
-		LOGGER.info(" ");
-		LOGGER.info("Calling lambda function with no return and two params");
-		LOGGER.info("lfNoReturnTwoParams.executeNoReturnTwoParams(param1, param2): ");
-		LambdaFunctionsNoReturnTwoParams lfNoReturnTwoParams = (param1, param2) -> {
-			LOGGER.info("param1: " + param1);
-			LOGGER.info("param2: " + param2);
-		};
-		lfNoReturnTwoParams.executeNoReturnTwoParams("foo", "bar");
-
-		LOGGER.info(" ");
-		LOGGER.info("Calling lambda function with return and no params");
-		LOGGER.info("lfWithReturnNoParams.executeWithReturnNoParams(): ");
-		LambdaFunctionsWithReturnNoParams lfWithReturnNoParams = () -> "Hello Lambda!";
-		LOGGER.info("return: " + lfWithReturnNoParams.executeWithReturnNoParams());
-
-		LOGGER.info(" ");
-		LOGGER.info("Calling lambda function with return and one param");
-		LOGGER.info("lfWithReturnOneParam.executeWithResultOneParam(param1): ");
-		LambdaFunctionsWithReturnOneParam lfWithReturnOneParam = (param1) -> {
-			LOGGER.info("param1: " + param1);
-			return param1;
-		};
-		LOGGER.info("return (param1): " + lfWithReturnOneParam.executeWithReturnOneParam("foo"));
-
-		LOGGER.info(" ");
-		LOGGER.info("Calling lambda function with return and two params");
-		LOGGER.info("lfWithReturnTwoParams.executeWithReturnTwoParams(param1, param2): ");
-		LambdaFunctionsWithReturnTwoParams lfWithReturnTwoParams = (param1, param2) -> {
-			LOGGER.info("param1: " + param1);
-			LOGGER.info("param2: " + param2);
-			return param1 + " + " + param2;
-		};
-		LOGGER.info("return (param1 + param2): " + lfWithReturnTwoParams.executeWithReturnTwoParams("foo", "bar"));
 	}
 
 	/* Streams */

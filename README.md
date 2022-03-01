@@ -34,3 +34,16 @@ TimeController holds the user entrypoint to call TimeUtil methods.
 * Examples
   * (server_ip_or_dns):(port_number)/time/currenttimemillis
   * (server_ip_or_dns):(port_number)/time/instant
+
+### 3. Working with Lambda Functions
+
+LambdaUtil holds a lot of util methods to work with lambda operations.
+
+LambdaController holds the user entrypoint to call lambda methods.
+* Examples
+  * (server_ip_or_dns):(port_number)/lambda/noreturn/noparams
+  * (server_ip_or_dns):(port_number)/lambda/noreturn/oneparam
+  * (server_ip_or_dns):(port_number)/lambda/noreturn/twoparams
+  * (server_ip_or_dns):(port_number)/lambda/withreturn/noparams
+  * (server_ip_or_dns):(port_number)/lambda/withreturn/oneparam
+  * (server_ip_or_dns):(port_number)/lambda/withreturn/twoparams

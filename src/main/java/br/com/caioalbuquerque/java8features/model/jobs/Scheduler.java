@@ -1,4 +1,4 @@
-package br.com.caioalbuquerque.java8features.examples.example07;
+package br.com.caioalbuquerque.java8features.model.jobs;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

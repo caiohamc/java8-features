@@ -1,4 +1,4 @@
-package br.com.caioalbuquerque.java8features.examples.example05;
+package br.com.caioalbuquerque.java8features.model.staticmethdinterface;
 
 import java.util.logging.Logger;
 

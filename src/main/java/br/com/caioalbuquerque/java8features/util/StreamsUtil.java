@@ -1,4 +1,4 @@
-package br.com.caioalbuquerque.java8features.examples.example04;
+package br.com.caioalbuquerque.java8features.util;
 
 import java.util.logging.Logger;
 import java.util.stream.IntStream;

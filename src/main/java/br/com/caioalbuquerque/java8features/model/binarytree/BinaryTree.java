@@ -70,8 +70,7 @@ public class BinaryTree {
     }
 
     /**
-     * Method to retrieve minimum binary tree key
-     *
+     * This method to retrieve minimum binary tree key
      * @param root search starting point
      * @return minimum key
      */
@@ -85,8 +84,7 @@ public class BinaryTree {
     }
 
     /**
-     * Method to retrieve maximum binary tree key
-     *
+     * This method to retrieve maximum binary tree key
      * @param root search starting point
      * @return maximum key
      */
@@ -100,8 +98,7 @@ public class BinaryTree {
     }
 
     /**
-     * Method to retrieve height of a binary tree
-     *
+     * This method to retrieve height of a binary tree
      * @param currentRoot root node of each recursive step
      * @return integer value that represents the bigger path from root to leaf
      */
@@ -110,12 +107,52 @@ public class BinaryTree {
             return -1;
         }
 
-        Integer maxLeftHeight = getHeight(currentRoot.getLeftChild());
-        Integer maxRightHeight = getHeight(currentRoot.getRightChild());
-        return getGreater(maxLeftHeight, maxRightHeight) + 1;
+        return (
+                getHeight(currentRoot.getLeftChild()) > getHeight(currentRoot.getRightChild())
+                ? getHeight(currentRoot.getLeftChild())     // left is higher
+                : getHeight(currentRoot.getRightChild())    // right is higher
+                ) + 1;
     }
 
-    private Integer getGreater(Integer maxLeftHeight, Integer maxRightHeight) {
-        return maxLeftHeight > maxRightHeight ? maxLeftHeight : maxRightHeight;
+    /**
+     * This method prints the binary tree elements with post order algorithm
+     * @param currentRoot while traversing, the current root changes
+     */
+    public void printPreOrder(TreeNode currentRoot) {
+        if (currentRoot == null) {
+            return;
+        }
+
+        LOGGER.info(currentRoot.getKey() + " ");
+        printPreOrder(currentRoot.getLeftChild()); 	// recur on left subtree
+        printPreOrder(currentRoot.getRightChild()); 	// recur on right subtree
+    }
+
+    /**
+     * This method prints the binary tree elements with in order algorithm
+     * @param currentRoot while traversing, the current root changes
+     */
+    public void printInOrder(TreeNode currentRoot) {
+        if (currentRoot == null) {
+            return;
+        }
+
+        printInOrder(currentRoot.getLeftChild());
+        LOGGER.info(currentRoot.getKey() + " ");
+        printInOrder(currentRoot.getRightChild());
+    }
+
+    /**
+     * This method prints the binary tree elements with post order algorithm
+     * @param currentRoot while traversing, the current root changes
+     */
+    public void printPostOrder(TreeNode currentRoot) {
+        if (currentRoot == null) {
+            return;
+        }
+
+        printPostOrder(currentRoot.getLeftChild());
+        printPostOrder(currentRoot.getRightChild());
+        LOGGER.info(currentRoot.getKey() + " ");
     }
 }

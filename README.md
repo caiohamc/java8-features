@@ -47,3 +47,12 @@ LambdaController holds the user entrypoint to call lambda methods.
   * (server_ip_or_dns):(port_number)/lambda/withreturn/noparams
   * (server_ip_or_dns):(port_number)/lambda/withreturn/oneparam
   * (server_ip_or_dns):(port_number)/lambda/withreturn/twoparams
+
+### 4. Working with Streams
+
+StreamsUtil holds a lot of util methods to work with streams operations.
+
+StreamsController holds the user entrypoint to call streams methods.
+* Examples
+  * (server_ip_or_dns):(port_number)/streams/fullintstream
+  * (server_ip_or_dns):(port_number)/streams/skippedintstream

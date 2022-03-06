@@ -12,11 +12,11 @@ import java.util.logging.Logger;
  * @since 01/03/2022
  */
 @RestController
-@RequestMapping(value = "/string")
+@RequestMapping("/string")
 public class StringController {
     private static final Logger LOGGER = Logger.getLogger("StringController");
 
-    @GetMapping(value = "/create/stringjoiner/onlydelimiter")
+    @GetMapping("/create/stringjoiner/onlydelimiter")
     public String createUsingStringJoinerOnlyWithDelimiter(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to create a String using StringJoiner only with Delimiter ; ");
@@ -24,7 +24,7 @@ public class StringController {
         return StringUtil.createStringUsingStringJoiner(";");
     }
 
-    @GetMapping(value = "/create/stringjoiner/delimiterprefixsuffix")
+    @GetMapping("/create/stringjoiner/delimiterprefixsuffix")
     public String createUsingStringJoinerWithDelimiterPrefixAndSuffix(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to create a String using StringJoiner with Delimiter ; Prefix [ and Suffix )");

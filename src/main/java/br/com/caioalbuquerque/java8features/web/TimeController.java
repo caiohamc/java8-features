@@ -13,11 +13,11 @@ import java.util.logging.Logger;
  * @since 01/03/2022
  */
 @RestController
-@RequestMapping(value = "/time")
+@RequestMapping("/time")
 public class TimeController {
     private static final Logger LOGGER = Logger.getLogger("TimeController");
 
-    @GetMapping(value = "/currenttimemillis")
+    @GetMapping("/currenttimemillis")
     public Long getTimeWithCurrentTimeMillis(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to retrieve a long time value -> Clock.systemUTC().millis(); ");
@@ -27,7 +27,7 @@ public class TimeController {
         return currentTimeMillis;
     }
 
-    @GetMapping(value = "/instant")
+    @GetMapping("/instant")
     public Instant getTimeWithInstantInstance(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to retrieve a Instant instance -> Clock.systemUTC().instant()");

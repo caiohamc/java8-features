@@ -40,18 +40,14 @@ public class StreamsUtil {
     }
 
     public static void getFilteredStream(){
-
     }
 
     public static void getSortedStream(){
-
     }
 
     public static void getMappedStream(){
-
     }
 
     public static void getCollectedStream(){
-
     }
 }

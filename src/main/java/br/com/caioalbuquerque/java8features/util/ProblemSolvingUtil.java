@@ -14,11 +14,12 @@ public class ProblemSolvingUtil {
      * This method works with the first not repeating character
      * @param inputString string to be traversed
      */
-    public static void getFirstNotRepeateadCharacter(String inputString){
+    public static Character getFirstNotRepeateadCharacter(String inputString){
         // SOLUTION 1
         for (int i=0; i<inputString.length(); i++) {
             if(inputString.indexOf(inputString.charAt(i)) == inputString.lastIndexOf(inputString.charAt(i))) {
                 LOGGER.info("String: " + inputString + " | Char: " + inputString.charAt(i));
+                return inputString.charAt(i);
             }
         }
 
@@ -36,6 +37,8 @@ public class ProblemSolvingUtil {
         //	if(charCount.get(c) == 1)
         //		return c;
         //}
+
+        return '_';
     }
 
     /**
@@ -44,9 +47,9 @@ public class ProblemSolvingUtil {
      * @param nums integers to be used in sum operation.
      * @param target integer to be compared with the result of sum operation.
      */
-    public static void getTwoSumIndexes(int[] nums, int target){
+    public static String getTwoSumIndexes(int[] nums, int target){
         if (nums == null || target < 0) {
-            return;
+            return null;
         }
 
         HashMap<Integer, Integer> auxNums = new HashMap<>();
@@ -57,20 +60,22 @@ public class ProblemSolvingUtil {
             int complement = target - current;
 
             if (auxNums.containsKey(complement)) {
-                LOGGER.info("Target: "+ target + " | Indexes: "
-                        + auxNums.get(complement) + " and " + i);
+                LOGGER.info("Target: "+ target + " | Indexes: " + auxNums.get(complement) + " and " + i);
+                return "Indexes: " + auxNums.get(complement) + " e " + i;
             }
         }
+
+        return null;
     }
 
     /**
      * This method works with the max sequence of zeros inside two ones
-     * @param number int value to be converted to binary and used in the method operation
+     * @param inputNumber int value to be converted to binary and used in the method operation
      */
-    public static void getMaxSequenceOfZerosInsideBinaryGap(int number) {
-        LOGGER.info("Integer Number: " + number);
+    public static Integer getMaxSequenceOfZerosInsideBinaryGap(Integer inputNumber) {
+        LOGGER.info("Integer Number: " + inputNumber);
 
-        String numberBinary = Integer.toBinaryString(number);
+        String numberBinary = Integer.toBinaryString(inputNumber);
         LOGGER.info("Binary Number: " + numberBinary);
 
         int max=0;
@@ -99,15 +104,16 @@ public class ProblemSolvingUtil {
         }
 
         LOGGER.info("Max zeros: " + max);
+        return max;
     }
 
     /**
      * This method works with the lower positive integer not present in the array of integers
      * @param inputArray array of integers
      */
-    public static void getLowerPositiveIntegerNotPresentInsideIntArray(int[] inputArray){
+    public static Integer getLowerPositiveIntegerNotPresentInsideIntArray(int[] inputArray){
         if (inputArray == null) {
-            return;
+            return null;
         }
 
         boolean isSearchFactorInsideInputArray;
@@ -139,5 +145,6 @@ public class ProblemSolvingUtil {
         }
 
         LOGGER.info("Number: " + searchFactor);
+        return searchFactor;
     }
 }

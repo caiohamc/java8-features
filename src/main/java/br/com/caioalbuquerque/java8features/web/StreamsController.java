@@ -1,9 +1,7 @@
 package br.com.caioalbuquerque.java8features.web;
 
-import br.com.caioalbuquerque.java8features.model.lambda.LambdaFunctionsNoReturnNoParams;
 import br.com.caioalbuquerque.java8features.util.StreamsUtil;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

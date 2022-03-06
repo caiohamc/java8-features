@@ -82,10 +82,21 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 
 		LOGGER.info(" ");
 		LOGGER.info("PROBLEM 01 - Factorials");
-		LOGGER.info("Fatorial de -2: " + getFactorialOf(-2));
-		LOGGER.info("Fatorial de 0: " + getFactorialOf(0));
-		LOGGER.info("Fatorial de 1: " + getFactorialOf(1));
-		LOGGER.info("Fatorial de 5: " + getFactorialOf(5));
+		LOGGER.info("Factorial of -2: " + getFactorialOf(-2));
+		LOGGER.info("Factorial of 0: " + getFactorialOf(0));
+		LOGGER.info("Factorial of 1: " + getFactorialOf(1));
+		LOGGER.info("Factorial of 1: " + getFactorialOf(3));
+		LOGGER.info("Factorial of 5: " + getFactorialOf(5));
+
+		LOGGER.info(" ");
+		LOGGER.info("PROBLEM 02 - Fibonacci");
+		LOGGER.info("Fibonacci at -1: " + getFibonacciAt(-1));
+		LOGGER.info("Fibonacci at 0: " + getFibonacciAt(0));
+		LOGGER.info("Fibonacci at 1: " + getFibonacciAt(1));
+		LOGGER.info("Fibonacci at 2: " + getFibonacciAt(2));
+		LOGGER.info("Fibonacci at 3: " + getFibonacciAt(3));
+		LOGGER.info("Fibonacci at 4: " + getFibonacciAt(4));
+		LOGGER.info("Fibonacci at 5: " + getFibonacciAt(5));
 	}
 
 	/**
@@ -336,6 +347,21 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		if (number >= 1) {
 			return number * getFactorialOf(number - 1);
 		} else if (number == 0) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+
+	/**
+	 * Recursio 02 - This method retrieves the fibonacci at an integer number index
+	 * @param number of the index of fibonacci operation
+	 * @return result of fibonacci operation
+	 */
+	private int getFibonacciAt(int number) {
+		if (number >= 3) {
+			return getFactorialOf(number - 1) + getFactorialOf(number - 2);
+		} else if (number > 0) {
 			return 1;
 		} else {
 			return -1;

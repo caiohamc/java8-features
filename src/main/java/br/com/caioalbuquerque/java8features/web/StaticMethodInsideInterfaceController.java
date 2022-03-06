@@ -16,54 +16,53 @@ import java.util.logging.Logger;
 public class StaticMethodInsideInterfaceController {
     private static final Logger LOGGER = Logger.getLogger("StaticMethodInsideInterfaceController");
 
-    static StaticMethodInsideInterfaceImpl staticMethodInsideInterface = new StaticMethodInsideInterfaceImpl();
-    static String returnedValue = null;
+    private final StaticMethodInsideInterfaceImpl staticMethodInsideInterface = new StaticMethodInsideInterfaceImpl();
 
     @GetMapping("/noreturn/noparams")
-    public static void callStaticMethodFromInterfaceNoReturnNoParams(){
+    public  void callStaticMethodFromInterfaceNoReturnNoParams(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to call static method from an interface with no return and no param");
-        LOGGER.info(" ");
         staticMethodInsideInterface.executeStaticMethodFromInterfaceNoReturnNoParams();
+        LOGGER.info("-----------------------------------------------------------------------------------------");
     }
 
     @GetMapping("/noreturn/oneparam")
-    public static void callStaticMethodFromInterfaceNoReturnOneParam(){
+    public void callStaticMethodFromInterfaceNoReturnOneParam(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to call static method from an interface with no return and one param");
-        LOGGER.info(" ");
         staticMethodInsideInterface.executeStaticMethodFromInterfaceNoReturnOneParam("foo");
+        LOGGER.info("-----------------------------------------------------------------------------------------");
     }
 
     @GetMapping("/noreturn/twoparams")
-    public static void callStaticMethodFromInterfaceNoReturnTwoParams(){
+    public void callStaticMethodFromInterfaceNoReturnTwoParams(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to call static method from an interface with no return and two params");
-        LOGGER.info(" ");
         staticMethodInsideInterface.executeStaticMethodFromInterfaceNoReturnTwoParams("foo", "bar");
+        LOGGER.info("-----------------------------------------------------------------------------------------");
     }
 
     @GetMapping("/withreturn/noparams")
-    public static void callStaticMethodFromInterfaceWithReturnNoParams(){
+    public void callStaticMethodFromInterfaceWithReturnNoParams(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to call static method from an interface with return and no params");
-        LOGGER.info(" ");
         LOGGER.info(staticMethodInsideInterface.executeStaticMethodFromInterfaceWithReturnNoParams());
+        LOGGER.info("-----------------------------------------------------------------------------------------");
     }
 
     @GetMapping("/withreturn/oneparam")
-    public static void callStaticMethodFromInterfaceWithReturnOneParam(){
+    public void callStaticMethodFromInterfaceWithReturnOneParam(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to call static method from an interface with return and one param");
-        LOGGER.info(" ");
         LOGGER.info(staticMethodInsideInterface.executeStaticMethodFromInterfaceWithResultOneParam("foo"));
+        LOGGER.info("-----------------------------------------------------------------------------------------");
     }
 
     @GetMapping("/withreturn/twoparams")
-    public static void callStaticMethodFromInterfaceWithReturnTwoParams(){
+    public void callStaticMethodFromInterfaceWithReturnTwoParams(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to call static method from an interface with return and two params");
-        LOGGER.info(" ");
         LOGGER.info(staticMethodInsideInterface.executeStaticMethodFromInterfaceWithResultTwoParams("foo", "bar"));
+        LOGGER.info("-----------------------------------------------------------------------------------------");
     }
 }

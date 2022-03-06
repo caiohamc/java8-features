@@ -17,7 +17,7 @@ public class ProblemSolvingController {
     private static final Logger LOGGER = Logger.getLogger("ProblemSolvingController");
 
     @GetMapping("/firstcharnotrepeated")
-    public static void getFirstNotRepeateadCharacter(){
+    public void getFirstNotRepeateadCharacter(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to retrieve first not repeated char ");
         ProblemSolvingUtil.getFirstNotRepeateadCharacter("aaabcddef");
@@ -27,7 +27,7 @@ public class ProblemSolvingController {
     }
 
     @GetMapping("/twoSumIndexes")
-    public static void getTwoSumIndexes(){
+    public void getTwoSumIndexes(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to retrieve first not repeated char ");
         int[] n1 = { 2, 7, 11, 19}, n2 = { 11, 19, 21, 25, 31, 33},  n3 = { 2, 3, 6, 7, 9};
@@ -38,7 +38,7 @@ public class ProblemSolvingController {
     }
 
     @GetMapping("/maxSequenceOfZerosInsideBinaryGap")
-    public static void getMaxSequenceOfZerosInsideBinaryGap(){
+    public void getMaxSequenceOfZerosInsideBinaryGap(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to retrieve max sequence of zeros inside two ones ");
         ProblemSolvingUtil.getMaxSequenceOfZerosInsideBinaryGap(1435);
@@ -46,7 +46,7 @@ public class ProblemSolvingController {
     }
 
     @GetMapping("/lowerPositiveIntegerNotPresentInsideIntArray")
-    public static void getLowerPositiveIntegerNotPresentInsideIntArray(){
+    public void getLowerPositiveIntegerNotPresentInsideIntArray(){
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to retrieve lower positive integer not present inside int array");
         int[] inputIntArray = { 1, 3, 6, 4, 1, 2};

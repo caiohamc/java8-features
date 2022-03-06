@@ -17,7 +17,7 @@ public class BinaryTreeController {
     private static final Logger LOGGER = Logger.getLogger("BinaryTreeController");
 
     @GetMapping("/preorder")
-    public static void getPreOrderPrinted() {
+    public void getPreOrderPrinted() {
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to print pre order binary tree");
         BinaryTree.getInstance().printPreOrder(BinaryTree.getInstance().getRoot());
@@ -25,7 +25,7 @@ public class BinaryTreeController {
     }
 
     @GetMapping("/inorder")
-    public static void getInOrderPrinted() {
+    public void getInOrderPrinted() {
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to print in order binary tree");
         BinaryTree.getInstance().printInOrder(BinaryTree.getInstance().getRoot());
@@ -33,7 +33,7 @@ public class BinaryTreeController {
     }
 
     @GetMapping("/postorder")
-    public static void getPostOrderPrinted() {
+    public void getPostOrderPrinted() {
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to print post order binary tree");
         BinaryTree.getInstance().printPostOrder(BinaryTree.getInstance().getRoot());
@@ -41,7 +41,7 @@ public class BinaryTreeController {
     }
 
     @GetMapping("/minkey")
-    public static void getMinKey() {
+    public void getMinKey() {
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to get minimum key of the binary tree");
         BinaryTree.getInstance().getMinKey(BinaryTree.getInstance().getRoot());
@@ -49,7 +49,7 @@ public class BinaryTreeController {
     }
 
     @GetMapping("/maxkey")
-    public static void getMaxKey() {
+    public void getMaxKey() {
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to get maximum key of the binary tree");
         BinaryTree.getInstance().getMaxKey(BinaryTree.getInstance().getRoot());
@@ -57,7 +57,7 @@ public class BinaryTreeController {
     }
 
     @GetMapping("/height")
-    public static void getHeight() {
+    public void getHeight() {
         LOGGER.info("-----------------------------------------------------------------------------------------");
         LOGGER.info("REST API method to get height of the binary tree");
         LOGGER.info("   Height: " + BinaryTree.getInstance().getHeight(BinaryTree.getInstance().getRoot()));

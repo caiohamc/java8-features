@@ -1,18 +1,10 @@
 package br.com.caioalbuquerque.java8features;
 
 import br.com.caioalbuquerque.java8features.model.binarytree.BinaryTree;
-import org.apache.kafka.clients.admin.AdminClientConfig;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.kafka.config.TopicBuilder;
-import org.springframework.kafka.core.KafkaAdmin;
 import org.springframework.scheduling.annotation.EnableScheduling;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -64,55 +56,4 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		binaryTree.addNode(9);
 		binaryTree.addNode(2);
 	}
-
-
-
-	/* ----------- Apache Kafka Setup ----------- */
-
-	@Bean
-	public KafkaAdmin admin() {
-		Map<String, Object> configs = new HashMap<>();
-		configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-		return new KafkaAdmin(configs);
-	}
-
-//	@Bean
-//	public NewTopic topic1() {
-//		return TopicBuilder.name("thing1").partitions(10).replicas(3).compact().build();
-//	}
-
-//	@Bean
-//	public NewTopic topic2() {
-//		return TopicBuilder.name("thing2").partitions(10).replicas(3)
-//				.config(TopicConfig.COMPRESSION_TYPE_CONFIG, "zstd").build();
-//	}
-
-//	@Bean
-//	public NewTopic topic3() {
-//		return TopicBuilder.name("thing3")
-//				.assignReplicas(0, Arrays.asList(0, 1))
-//				.assignReplicas(1, Arrays.asList(1, 2))
-//				.assignReplicas(2, Arrays.asList(2, 0))
-//				.config(TopicConfig.COMPRESSION_TYPE_CONFIG, "zstd").build();
-//	}
-
-//	@Bean
-//	public KafkaAdmin.NewTopics topics456() {
-//		return new KafkaAdmin.NewTopics(
-//				TopicBuilder.name("defaultBoth").build(),
-//				TopicBuilder.name("defaultPart").replicas(1).build(),
-//				TopicBuilder.name("defaultRepl").partitions(3).build());
-//	}
-
-//	@KafkaListener(id = "myId", topics = "topic1")
-//	public void listen(String in) {
-//		System.out.println(in);
-//	}
-//
-//	@Bean
-//	public ApplicationRunner runner(KafkaTemplate<String, String> template) {
-//		return args -> {
-//			template.send("topic1", "test");
-//		};
-//	}
 }

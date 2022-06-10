@@ -5,7 +5,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
+
+import java.util.Locale;
 import java.util.logging.Logger;
+
+import javax.money.Monetary;
+import javax.money.MonetaryAmount;
+import javax.money.format.MonetaryFormats;
 
 /**
  * @author Caio Albuquerque
@@ -22,6 +28,17 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		getConvertedLambda("private void add(int x, int y) { System.out.println(x+y); }");
+
+		MonetaryAmount monetaryAmount = Monetary
+			.getDefaultAmountFactory()
+			.setCurrency(Monetary.getCurrency("BRL"))
+			.setNumber(1231234.56)
+			.create();
+
+		String formattedMonetaryAmount = MonetaryFormats.getAmountFormat(new Locale("pt", "BR")).format(monetaryAmount);
+		System.out.println("-> " + formattedMonetaryAmount.replace("BRL", "R$"));
+
 		runJobs();
 		runBinaryTreeCreation();
 	}
@@ -55,5 +72,31 @@ public class Java8FeaturesApplication implements CommandLineRunner {
 		binaryTree.addNode(8);
 		binaryTree.addNode(9);
 		binaryTree.addNode(2);
+	}
+
+	private String getConvertedLambda(String nonLambdaCodeText){
+		/**
+		 * nonLambdaCodeText = "private void add(int x, int y) { System.out.println(x+y); }"
+		 */
+		String convertedLambda;
+
+		// Step 1 - Removendo modificadores de acesso
+		convertedLambda = nonLambdaCodeText.substring(8);   /** "void add(int x, int y) { System.out.println(x+y); }" */
+		// Step 2 - Removendo tipo de retorno
+		convertedLambda = convertedLambda.substring(5);     /** "add(int x, int y) { System.out.println(x+y); }" */
+		// Step 3 - Removendo nome do método
+		convertedLambda = convertedLambda.substring(3);     /** "(int x, int y) { System.out.println(x+y); }" */
+		// Step 4 - Inserindo símbolo ->
+		String[] aux = convertedLambda.split("\\{");
+		convertedLambda = aux[0] + "-> {" + aux[1];                  /** "(int x, int y) -> { System.out.println(x+y); }" */
+		// Step 5 - Removendo tipos de parâmetros e chaves
+		convertedLambda = convertedLambda
+			.replace("int ", "");                   /** "(x, y) -> { System.out.println(x+y); }" */
+		convertedLambda = convertedLambda
+			.replace("{ ", "");                     /** "(int x, int y) -> System.out.println(x+y); }" */
+		convertedLambda = convertedLambda
+			.replace(" }", "");                     /** "(int x, int y) -> System.out.println(x+y);" */
+
+		return convertedLambda; /** (int x, int y) -> System.out.println(x+y); */
 	}
 }
